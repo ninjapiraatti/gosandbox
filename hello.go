@@ -8,22 +8,26 @@ import "fmt"
 
 var foo int
 
+// User is a user
+type User struct {
+	ID             int
+	Name, Location string
+}
+
+// Greetings greet ppl
+func (u *User) Greetings() string {
+	return fmt.Sprintf("Hi %s from %s",
+		u.Name, u.Location)
+}
+
+// Player is a player of games
+type Player struct {
+	User
+	GameID int
+}
+
 func add(x int, y int) int {
 	return x + y
-}
-
-type Dog struct {
-	Animal
-}
-type Animal struct {
-	Age int
-}
-
-func (a *Animal) Move() {
-	fmt.Println("Animal moved")
-}
-func (a *Animal) SayAge() {
-	fmt.Printf("Animal age: %d\n", a.Age)
 }
 
 func main() {
@@ -34,10 +38,11 @@ func main() {
 
 	// Struct magicks
 
-	d := Dog{}
-	d.Age = 3
-	d.Move()
-	d.SayAge()
+	p := Player{}
+	p.ID = 42
+	p.Name = "Matt"
+	p.Location = "LA"
+	fmt.Println(p.Greetings())
 
 	// You can print the type of a variable thusly:
 
