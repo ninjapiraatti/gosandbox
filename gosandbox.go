@@ -3,24 +3,31 @@ package main
 import (
 	"fmt"
 
+	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/ninjapiraatti/gotools"
+
 	"./kylpynallet"
 )
-
-// Use var when outside of a function.
-// If you don't set a value, zero value of the type is set.
-// answer is therefore 0.
-
-var answer int
-
-func add(x int, y int) int {
-	return x + y
-}
 
 func main() {
 	x := 42
 	for i := 0; i < 3; i++ {
-		fmt.Println(add(42, x*i))
+		fmt.Println(gotools.Add(42, x*i))
 	}
+
+	db, err := sql.Open("mysql", "gotesti_1:Xv7NNK181fdAiBe2@tcp(dedi1450.your-server.de:3306)/gotesti")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
+
+	insert, err := db.Query("INSERT INTO animals(name) VALUES('koiro')")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer insert.Close()
 
 	// Plain old array
 	//animals := [2]string{"Gopher", "Honeybadger"}
@@ -45,10 +52,8 @@ func main() {
 		fmt.Println(p.Greetings())
 	*/
 
-	// You can print the type of a variable thusly:
-
-	fmt.Printf("%T\n", answer)
 	n := kylpynallet.KylpyNallet1()
 	fmt.Println(n)
 	slicetest()
+	fmt.Println(gotools.Multiply(2, 6))
 }
