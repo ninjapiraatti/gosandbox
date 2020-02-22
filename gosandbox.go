@@ -8,6 +8,7 @@ import (
 )
 
 func basicprints() {
+	gotools.Color(gotools.Green, "Here we go\n")
 	x := 42
 	for i := 0; i < 3; i++ {
 		fmt.Println(gotools.Add(42, x*i))
@@ -25,13 +26,22 @@ func basicprints() {
 	cities2 = append(cities2, otherCities...)
 	fmt.Printf("%q", cities2)
 
+	foods := map[string]int{
+		"Carrot": 50,
+		"Radish": 45,
+		"Apple":  65,
+	}
+	for key, value := range foods {
+		fmt.Printf("\nFood: %s. Value: %d.", key, value)
+	}
+
 	seepra := gotools.Creature{}
 	seepra.Species = ""
-	seepra.Name = ""
+	seepra.Name = "Sepi Seepra"
 	seepra.Age = 0
 	seepra.IsGoodBoi = true
 
-	fmt.Println(seepra.Age)
+	fmt.Println(seepra.Name)
 	fmt.Println(animals[1])
 	slicetest()
 	fmt.Println(gotools.Multiply(2, 6))
