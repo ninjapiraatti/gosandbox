@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/ninjapiraatti/gotools"
 )
@@ -68,9 +70,21 @@ func basicprints() {
 }
 
 func main() {
-	if len(os.Args) > 1 {
-		basicprints()
+
+	reader := bufio.NewReader(os.Stdin)
+	gotools.Color(gotools.ToggleGreen, "Here we go\n")
+	fmt.Println("---------------------")
+
+	for {
+		fmt.Print("-> ")
+		text, _ := reader.ReadString('\n')
+		// convert CRLF to LF
+		text = strings.Replace(text, "\n", "", -1)
+
+		if strings.Compare("hi", text) == 0 {
+			fmt.Println("hello, Yourself")
+		}
+
 	}
-	// Display number of arguments
-	fmt.Println(len(os.Args))
+
 }
