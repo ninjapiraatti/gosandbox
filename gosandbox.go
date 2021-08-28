@@ -74,10 +74,3 @@ func main() {
 	// Display number of arguments
 	fmt.Println(len(os.Args))
 }
-
-/*
-func (u *gotools.Creature) Greetings() string {
-	return fmt.Sprintf("Hi %s from %s",
-		u.Species, u.Name)
-}
-*/
