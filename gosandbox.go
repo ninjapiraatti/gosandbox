@@ -26,7 +26,7 @@ func basicprints() {
 	fmt.Printf("\n\n%s Various basic stuff. %s\n\n", separator, separator)
 	animals := [2]string{"Gopher", "Honeybadger"}
 	cities := []string{}
-	cities = append(cities, "San Diego", "Mountain View")
+	cities = append(cities, "San Dieggo", "Mountain View")
 	fmt.Printf("%q", cities)
 	fmt.Println(len(cities))
 
