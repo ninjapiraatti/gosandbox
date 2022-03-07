@@ -66,25 +66,48 @@ func basicprints() {
 	fmt.Printf("\n\n%s gotools.IsItFortytwo %s\n\n", separator, separator)
 	fmt.Println(gotools.IsItFortytwo(126))
 
+	fmt.Printf("\n\n%s chatBots %s\n\n", separator, separator)
+	bots()
+
+	fmt.Printf("\n\n%s httpExercise %s\n\n", separator, separator)
+	httpInterface()
+
+	fmt.Printf("\n\n%s Interface assignment %s\n\n", separator, separator)
+	geometry()
+
+	fmt.Printf("\n\n%s Maps %s\n\n", separator, separator)
+	maps()
+
+	fmt.Printf("\n\n%s Channels and concurrency %s\n\n", separator, separator)
+	channels()
+	os.Exit(0)
 	//gotools.AddCreatureDB(animal)
 }
 
 func main() {
 
-	reader := bufio.NewReader(os.Stdin)
-	gotools.Color(gotools.ToggleGreen, "Here we go\n")
-	fmt.Println("---------------------")
+	argsWithoutProg := os.Args[1:]
+	if len(argsWithoutProg) > 0 {
+		arguments(argsWithoutProg)
+	} else {
+		reader := bufio.NewReader(os.Stdin)
+		gotools.Color(gotools.ToggleGreen, "Here we go\n")
+		fmt.Println("---------------------")
 
-	for {
-		fmt.Print("-> ")
-		text, _ := reader.ReadString('\n')
-		// convert CRLF to LF
-		text = strings.Replace(text, "\n", "", -1)
+		for {
+			fmt.Print("-> ")
+			text, _ := reader.ReadString('\n')
+			// convert CRLF to LF
+			text = strings.Replace(text, "\n", "", -1)
 
-		if strings.Compare("hi", text) == 0 {
-			fmt.Println("hello, Yourself")
+			if strings.Compare("hi", text) == 0 {
+				fmt.Println("hello, Yourself")
+			}
+
+			if strings.Compare("run", text) == 0 {
+				basicprints()
+			}
 		}
-
 	}
 
 }
